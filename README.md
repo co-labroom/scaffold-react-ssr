@@ -133,6 +133,66 @@ export default Model.getInstance(
 
 ### styled-jsx 样式书写
 
+这次采用的是 nextjs 推荐的[styled-jsx](https://github.com/zeit/styled-jsx)样式方案，它属于 css in js 的一种实现，另外我们使 styled-jsx 集成了 sass。
+
+现在来一块完成下样式的编写,假设我们需要写一个首页，先写首页组件：
+
+```js
+import React, { Component } from "react";
+import styles from "./Index.scss";
+
+class Index extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+        <style jsx>{styles}</style>
+      </div>
+    );
+  }
+}
+
+export default Index;
+```
+
+`Index.scss`文件内容如下
+
+```scss
+/* @styled-jsx=scoped */
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.App-intro {
+  font-size: large;
+}
+```
+
+组件的样式你可以`import`他们来自 scss 文件，并使用一个`<style jsx>`标签渲染他们，就像以上代码中的`<style jsx>{styles}</style>`。如果你想要你的样式成为全局样式，记得添加 global 属性`<style jsx global>`。当然你也可以使用一次性全局选择器`:global()`,在样式文件中局部定义全局样式。详见:https://github.com/zeit/styled-jsx
+
 ### 接口请求 fetch 的封装
 
 ### 与 gee-ui 组件库集成
