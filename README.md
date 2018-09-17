@@ -195,7 +195,39 @@ export default Index;
 
 ### 接口请求 fetch 的封装
 
-### 与 gee-ui 组件库集成
+### 与 gee-ui 组件库集成开发
+
+[gee-ui](https://github.com/geetemp/gee-ui)组件库是我们 geetemp 前端团队内部的组件库实现，目前建立在对 antd 的继承实现上。目标是
+从各个项目中抽取出公共组件的实现，与设计人员合作，形成一套公共的组件规范，以期服务于各类 pc 端项目产品。
+
+借助`yarn link`或`npm link`命令，脚手架与 gee-ui 可以轻松集成，同时开发。
+
+##### 安装 gee-ui
+
+从 github 拉取 gee-ui 并安装
+
+```
+git clone git@github.com:geetemp/gee-ui.git
+yarn install
+yarn dev
+```
+
+##### 集成 gee-ui
+
+在 gee-ui 项目根目录下 link
+
+```
+cd gee-ui
+yarn link
+```
+
+使用该脚手架的项目根目录下 link gee-ui,并启动项目进行开发
+
+```
+cd {项目根目录}
+yarn link gee-ui
+yarn start
+```
 
 ### 技术栈
 
