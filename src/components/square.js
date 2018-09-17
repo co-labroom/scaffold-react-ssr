@@ -12,7 +12,7 @@ Square.defaultProps = {
   value: ""
 };
 
-function Square({ onClick, value = "" }) {
+export default function Square({ onClick, value = "" }) {
   return (
     <React.Fragment>
       <button className="square" onClick={onClick}>
@@ -43,5 +43,3 @@ function Square({ onClick, value = "" }) {
     </React.Fragment>
   );
 }
-
-export default Square;
