@@ -51,7 +51,101 @@ export default function Square({ onClick, value = "" }) {
 }
 ```
 
-上述函数写法，首先把 props 类型说明(propTypes)和 props 默认值(defaultProps)放在开头，让使用者直接知道能给组件传递什么 props;
+这里，我们在组件声明之前设置`propTypes`和`defaultProps`，以至于他们能直接可见。我们可以这样做，是因为 javascript 函数提升。
+
+#### class 组件编写
+
+class 组件是可以有状态和组件生命周期方法的。我们一步步来写一个 class 组件。
+
+###### 初始化 state
+
+```js
+import React, { Component } from 'react'
+export default class ProfileContainer extends Component {
+  state = { expanded: false }
+```
+
+你也可以使用老办法在构造器函数中初始化 state,你可以去[这里](https://stackoverflow.com/questions/35662932/react-constructor-es6-vs-es7)了解更多。我们更喜欢这种简洁的方式。
+
+###### propTypes 和 defaultProps
+
+```js
+import React, { Component } from 'react'
+export default class ProfileContainer extends Component {
+  state = { expanded: false }
+
+  static propTypes = {
+    model: object.isRequired,
+    title: string
+  }
+
+  static defaultProps = {
+    model: {
+      id: 0
+    },
+    title: 'Your Name'
+  }
+```
+
+propTypes 和 defaultProps 是静态属性，在组件代码中尽可能在顶部声明。他们应当被读此文件的其他开发者立即可见，因为他们作为文档提供服务。
+
+###### 方法
+
+```js
+import React, { Component } from 'react'
+export default class ProfileContainer extends Component {
+  state = { expanded: false }
+
+  static propTypes = {
+    model: object.isRequired,
+    title: string
+  }
+
+  static defaultProps = {
+    model: {
+      id: 0
+    },
+    title: 'Your Name'
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.model.save()
+  }
+
+  handleNameChange = (e) => {
+    this.props.model.changeName(e.target.value)
+  }
+
+  handleExpand = (e) => {
+    e.preventDefault()
+    this.setState({ expanded: !this.state.expanded })
+  }
+```
+
+对于类组件，当你传递放到到子组件时，你必须确保当他们被调用时有正确的 this。这通常通过将`this.handleSubmit.bind(this)`传递给子组件实现。
+
+我们认为以上方法清楚又简单，通过 es6 箭头函数自动维护正确的 this 上下文。
+
+###### 闭包
+
+避免传递一个闭包给子组件，就像:
+
+```js
+<input
+  type="text"
+  value={model.name}
+  // onChange={(e) => { model.name = e.target.value }}
+  // ^ Not this. Use the below:
+  onChange={this.handleChange}
+  placeholder="Your Name"
+/>
+```
+
+原因是：每次父组件重新渲染时，一个新的函数会被创建并传入 input
+
+如果 input 是一个 react 组件，这将自动触发 input 重新渲染，不管它的其他 props 是否有真正的改变。
+
+`Reconciliation`在 React 是一个开销昂贵的部分。传入一个类方法更容易阅读、调试和更改。
 
 ### model 的使用
 
@@ -229,9 +323,14 @@ yarn link gee-ui
 yarn start
 ```
 
+##### 定制 gee-ui 主题
+
+gee-ui 主题的定制方法与 antd 相同，在 src 目录下新建 theme.js 文件，并定制主题变量。
+
 ### 技术栈
 
 - react
 - react-router
 - redux
 - styled-jsx
+- fetch
