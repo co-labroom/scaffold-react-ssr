@@ -2,11 +2,20 @@
 
 react server side render 脚手架，抽象团队项目中的公共部件，沉淀技术方案实践，与技术规范。
 
-- [styled-jsx 样式书写](#styled-jsx 样式书写)
+- [组件书写规范](#组件书写规范)
+  - [function 组件编写](function-组件编写)
+  - [class 组件编写](class-组件编写)
+- [model 的使用](#model-的使用)
+- [styled-jsx 样式书写](#styled-jsx-样式书写)
+- [接口请求 fetch 的封装](#接口请求-fetch-的封装)
+- [与 gee-ui 组件库集成开发](#与-gee-ui-组件库集成开发)
+- [技术栈](#技术栈)
 
 ### 组件书写规范
 
 组件有两种写法，一种是函数(function)，另一种是类(class)。先看下函数的写法规范
+
+#### function 组件编写
 
 ```js
 // eslint-disable-next-line no-use-before-define
@@ -302,7 +311,7 @@ export default Index;
 
 从 github 拉取 gee-ui 并安装
 
-```
+```bash
 git clone git@github.com:geetemp/gee-ui.git
 yarn install
 yarn dev
@@ -312,14 +321,14 @@ yarn dev
 
 在 gee-ui 项目根目录下 link
 
-```
+```bash
 cd gee-ui
 yarn link
 ```
 
 使用该脚手架的项目根目录下 link gee-ui,并启动项目进行开发
 
-```
+```bash
 cd {项目根目录}
 yarn link gee-ui
 yarn start
