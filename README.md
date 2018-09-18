@@ -2,6 +2,8 @@
 
 react server side render 脚手架，抽象团队项目中的公共部件，沉淀技术方案实践，与技术规范。
 
+- [styled-jsx 样式书写](#styled-jsx 样式书写)
+
 ### 组件书写规范
 
 组件有两种写法，一种是函数(function)，另一种是类(class)。先看下函数的写法规范
