@@ -3,12 +3,15 @@
 react server side render 脚手架，抽象团队项目中的公共部件，沉淀技术方案实践，与技术规范。
 
 - [组件书写规范](#组件书写规范)
-  - [function 组件编写](function-组件编写)
-  - [class 组件编写](class-组件编写)
+  - [function 组件编写](#function-组件编写)
+  - [class 组件编写](#class-组件编写)
 - [model 的使用](#model-的使用)
 - [styled-jsx 样式书写](#styled-jsx-样式书写)
 - [接口请求 fetch 的封装](#接口请求-fetch-的封装)
 - [与 gee-ui 组件库集成开发](#与-gee-ui-组件库集成开发)
+  - [安装 gee-ui](#安装-gee-ui)
+  - [集成 gee-ui](#集成-gee-ui)
+  - [定制 gee-ui 主题](#定制-gee-ui-主题)
 - [技术栈](#技术栈)
 
 ### 组件书写规范
