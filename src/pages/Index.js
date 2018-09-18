@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "assets/imgs/logo.svg";
-import { Button, Modal } from "gee-ui";
 import styles from "./Index.scss";
 
 class Index extends Component {
@@ -46,22 +45,6 @@ class Index extends Component {
           <Link to="/tictactoe/1" className="go-tic">
             来把XO旗！+ 子路由
           </Link>
-        </div>
-        <div className="components">
-          <Button>Antd Button</Button>
-          <Button type="primary" onClick={this.showModal}>
-            Open Modal
-          </Button>
-          <Modal
-            title="Basic Modal"
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-          >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-          </Modal>
         </div>
         <style jsx>{styles}</style>
       </div>

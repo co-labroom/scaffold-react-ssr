@@ -2,6 +2,7 @@
 
 react server side render 脚手架，抽象团队项目中的公共部件，沉淀技术方案实践，与技术规范。
 
+- [Getting started](#Getting-started)
 - [组件书写规范](#组件书写规范)
   - [function 组件编写](#function-组件编写)
   - [class 组件编写](#class-组件编写)
@@ -13,6 +14,24 @@ react server side render 脚手架，抽象团队项目中的公共部件，沉�
   - [集成 gee-ui](#集成-gee-ui)
   - [定制 gee-ui 主题](#定制-gee-ui-主题)
 - [技术栈](#技术栈)
+
+### Getting started
+
+克隆项目,修改项目文件夹名称，删除.git 文件
+
+```bash
+git clone git@github.com:geetemp/scaffold-react-ssr.git
+rename scaffold-react-ssr [项目名称]
+cd [项目名称]
+del .git
+```
+
+安装依赖，并启动
+
+```bash
+yarn install
+yarn start
+```
 
 ### 组件书写规范
 
@@ -339,7 +358,16 @@ yarn start
 
 ##### 定制 gee-ui 主题
 
-gee-ui 主题的定制方法与 antd 相同，在 src 目录下新建 theme.js 文件，并定制主题变量。
+[gee-ui](https://github.com/geetemp/gee-ui) 主题的定制方法与 antd 相同，在 src 目录下新建 theme.js 文件，并定制主题变量。
+
+```js
+//theme.js
+module.exports = () => {
+  return {
+    "primary-color": "#1DA57A"
+  };
+};
+```
 
 ### 技术栈
 
